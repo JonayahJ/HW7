@@ -1,10 +1,12 @@
 // dependencies
+// connecting the markdown file
+const generateMarkdown = require("./utils/generateMarkdown")
+
 // fs for file writing
 var fs = require("fs");
 
 // requiring inquirer
 var inquirer = require("inquirer");
-const { title } = require("process");
 
 // array of questions for user
 const questions = [
@@ -20,11 +22,6 @@ const questions = [
     },
     {
         type: "input",
-        message: "Include your table of contents",
-        name: "table of contents",
-    },
-    {
-        type: "input",
         message: "How do you install your project?",
         name: "install",
     },
@@ -34,10 +31,10 @@ const questions = [
         name: "usage",
     },
     {
-        type: "input",
+        type: "checkbox",
         message: "Which licenses did you use for your project?",
         name: "license",
-        choices: ["MIT", "Open Source", "Apache"]
+        choices: ["MIT", "Zlib", "Apache", "None"]
     },
     {
         type: "input",
@@ -46,25 +43,41 @@ const questions = [
     },
     {
         type: "input",
-        message: "What is the title of your project?",
+        message: "What tests will you be running?",
         name: "tests",
     },
     {
         type: "input",
-        message: "What is the title of your project?",
+        message: "What questions do you have?",
         name: "questions",
-    }
+    },
+    {
+        type: "input",
+        message: "What is your github username?",
+        name: "username",
+    },
+    {
+        type: "input",
+        message: "What is your email address?",
+        name: "email",
+    },
 ];
 
 // function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data);
-}
+    fs.writeFile(fileName, data, function (err) {
+      if (err) {
+        return console.log(err);
+      }
+    });
+  }
+  // function to initialize program
+  function init() {
+    inquirer.prompt(questions).then(function (response) {
+      var markdownData = generateMarkdown(response);
+      writeToFile("README.md", markdownData);
+    });
+  }
 
-// function to initialize program
-function init() {
-    
-}
-
-// function call to initialize program
-init();
+  // function call to initialize program
+  init();
