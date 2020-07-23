@@ -1,19 +1,17 @@
 // function to generate markdown for README
 function generateMarkdown(data) {
 
-  var template =`  # ${data.title}
-  `;
+  var template =`  # ${data.title}`;
 
   if(data.license == "MIT"){
-    template+=`  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`;
+    template +=`  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`;
   }else if (data.license == "Zlib"){
-    template+= ` [![License: Zlib](https://img.shields.io/badge/License-Zlib-lightgrey.svg)](https://opensource.org/licenses/Zlib)`;
+    template += ` [![License: Zlib](https://img.shields.io/badge/License-Zlib-lightgrey.svg)](https://opensource.org/licenses/Zlib)`;
   }else if (data.license == "Apache"){
-    template+= ` [![License: Apache](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`;
+    template += ` [![License: Apache](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`;
   };
   
   return template+ `
-  
   
   ## Table of Contents
   1. [Project Description](#description)
