@@ -1,5 +1,5 @@
 // dependencies
-// connecting the markdown file
+// connecting the markdown file template
 const generateMarkdown = require("./utils/generateMarkdown")
 
 // fs for file writing
@@ -74,7 +74,9 @@ function writeToFile(fileName, data) {
   // function to initialize program
   function init() {
     inquirer.prompt(questions).then(function (response) {
+      // creating a variable to fill the markdown template with user input data
       var markdownData = generateMarkdown(response);
+      //writing the user input data to the readme
       writeToFile("README.md", markdownData);
     });
   }
