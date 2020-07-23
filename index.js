@@ -31,7 +31,7 @@ const questions = [
         name: "usage",
     },
     {
-        type: "checkbox",
+        type: "list",
         message: "Which licenses did you use for your project?",
         name: "license",
         choices: ["MIT", "Zlib", "Apache", "None"]
@@ -48,7 +48,7 @@ const questions = [
     },
     {
         type: "input",
-        message: "What questions do you have?",
+        message: "What FAQs should users know about?",
         name: "questions",
     },
     {
