@@ -3,10 +3,10 @@
 const generateMarkdown = require("./utils/generateMarkdown")
 
 // fs for file writing
-var fs = require("fs");
+const fs = require("fs");
 
 // requiring inquirer
-var inquirer = require("inquirer");
+const inquirer = require("inquirer");
 
 // array of questions for user
 const questions = [
